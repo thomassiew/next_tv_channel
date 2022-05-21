@@ -1,5 +1,7 @@
 import React from "react";
 import { GetStaticProps } from "next";
+import Header from "../components/home/Header";
+import ChannelListing from "../components/home/ChannelListing";
 
 interface ChannelDataType {
   responseCode: number;
@@ -7,33 +9,15 @@ interface ChannelDataType {
   response: any[];
 }
 
-const ChannelBox = ({ channel }: { channel: any }) => {
-  return (
-    <div className="border rounded-md shadow px-3 py-2">
-      <div className="text-lg text-bold py-2">
-        {channel.title}{" "}
-        <span className="text-sm text-gray-500 ml-3">
-          CH{channel.stbNumber}
-        </span>
-      </div>
-      <div className="text-sm text-gray-700">ℹ️ {channel.description}</div>
-    </div>
-  );
-};
-
-export default function Home(props: ChannelDataType) {
+export default function ChannelHome(props: ChannelDataType) {
   const data = props.response;
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      {props && (
-        <div className="py-7">
-          {data.map((channel) => {
-            return <ChannelBox key={channel.id} channel={channel} />;
-          })}
-        </div>
-      )}
-    </>
+    props && (
+      <>
+        <Header />
+        <ChannelListing channels={data} />
+      </>
+    )
   );
 }
 
