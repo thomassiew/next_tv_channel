@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { format } from "date-fns";
-import { ChannelDetails } from "../../../types/channel.types";
+import { ChannelDetails } from "../../types/channel.types";
 
 const ChannelBox = ({ channel }: { channel: ChannelDetails }) => {
   const currentSchedule = channel.currentSchedule;

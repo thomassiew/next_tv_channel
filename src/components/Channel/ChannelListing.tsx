@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../common/Container";
+import Container from "../common/Container";
 import { useStore } from "../../store/useStoreContext";
 import ChannelBox from "./ChannelBox";
 

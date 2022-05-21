@@ -3,9 +3,12 @@ import React, { useEffect } from "react";
 import { GetStaticProps } from "next";
 import Header from "../components/common/Header";
 import { ChannelDetails } from "../types/channel.types";
-import ChannelListing from "../components/home/Channel/ChannelListing";
+import ChannelListing from "../components/Channel/ChannelListing";
 import Search from "../components/common/Search";
-import { useStore } from "../components/store/useStoreContext";
+import { useStore } from "../store/useStoreContext";
+import ChannelCategory from "../components/Channel/ChannelCategory";
+import Modal from "../components/common/Modal";
+import ChannelSort from "../components/Channel/ChannelSort";
 
 interface ChannelDataType {
   responseCode: number;
@@ -15,20 +18,23 @@ interface ChannelDataType {
 
 export default function ChannelHome(props: ChannelDataType) {
   const data: ChannelDetails[] = props.response;
-  const { searchKey, setFilteredData, setSearchKey } = useStore();
+  const { setInitialData, setSearchKey, isOpenModal } = useStore();
 
   useEffect(() => {
-    if (data) setFilteredData(data);
+    if (data) setInitialData(data);
   }, []);
 
-  useEffect(() => {
-    if (!searchKey) setFilteredData(data);
-  }, [searchKey]);
   return (
     props && (
       <>
+        {isOpenModal && (
+          <Modal>
+            <ChannelSort />
+          </Modal>
+        )}
         <Header />
         <Search onSubmit={setSearchKey} />
+        <ChannelCategory />
         <ChannelListing />
       </>
     )

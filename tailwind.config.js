@@ -32,6 +32,7 @@ module.exports = {
       },
       colors: {
         "astro-black": "rgb(51, 51, 51)",
+        "modal-black": "rgb(0, 0, 0,0.9)",
         "astro-pink": "rgb(230, 0, 125)",
       },
     },
