@@ -21,7 +21,18 @@ module.exports = {
         "32px": "32px",
       },
       minWidth: {
-        "1/3": "33%",
+        "1/4": "28%",
+      },
+      screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1180px",
+        "2xl": "1536px",
+      },
+      colors: {
+        "astro-black": "rgb(51, 51, 51)",
+        "astro-pink": "rgb(230, 0, 125)",
       },
     },
   },

@@ -1,21 +1,35 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react";
 import { GetStaticProps } from "next";
-import Header from "../components/home/Header";
-import ChannelListing from "../components/home/ChannelListing";
+import Header from "../components/common/Header";
+import { ChannelDetails } from "../types/channel.types";
+import ChannelListing from "../components/home/Channel/ChannelListing";
+import Search from "../components/common/Search";
+import { useStore } from "../components/store/useStoreContext";
 
 interface ChannelDataType {
   responseCode: number;
   responseMessage: string;
-  response: any[];
+  response: ChannelDetails[];
 }
 
 export default function ChannelHome(props: ChannelDataType) {
-  const data = props.response;
+  const data: ChannelDetails[] = props.response;
+  const { searchKey, setFilteredData, setSearchKey } = useStore();
+
+  useEffect(() => {
+    if (data) setFilteredData(data);
+  }, []);
+
+  useEffect(() => {
+    if (!searchKey) setFilteredData(data);
+  }, [searchKey]);
   return (
     props && (
       <>
         <Header />
-        <ChannelListing channels={data} />
+        <Search onSubmit={setSearchKey} />
+        <ChannelListing />
       </>
     )
   );
