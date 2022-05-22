@@ -20,8 +20,8 @@ export interface CurrentSchedule {
   title: string;
   programmeId: null;
   episodeId: null;
-  datetime: Date;
-  datetimeInUtc: Date;
+  datetime: string;
+  datetimeInUtc: string;
   duration: string;
   siTrafficKey: string;
   detailUrl: string;

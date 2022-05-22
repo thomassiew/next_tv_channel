@@ -33,7 +33,7 @@ const ChannelBox = ({ channel }: { channel: Channel }) => {
               const scheduleTime =
                 index < 1
                   ? "On Now"
-                  : format(new Date(schedule.datetime), "hh:mm a");
+                  : format(new Date(schedule.datetime.replace(/ /g, "T")), "hh:mm a");
               return (
                 <div key={schedule.eventId} className="flex flex-row">
                   <div className="pr-5 min-w-6rem">

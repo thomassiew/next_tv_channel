@@ -68,15 +68,23 @@ const ChannelDetailsSchedule = ({ schedules }: { schedules: Schedule }) => {
           selectedSchedule.length > 0 &&
           selectedSchedule.map((schedule, index) => {
             const specialToday =
-              isToday(new Date(schedule.datetime)) && index === 0;
+              isToday(new Date(schedule.datetime.replace(/ /g, "T"))) &&
+              index === 0;
             const scheduleTime = specialToday
               ? "On Now"
-              : format(new Date(schedule.datetime), "hh:mm a");
+              : format(
+                  new Date(schedule.datetime.replace(/ /g, "T")),
+                  "hh:mm a"
+                );
 
             return (
               <div key={schedule.eventId} className="flex flex-row">
                 <div className="pr-5 min-w-6rem mr-4">
-                  <p className={`text-gray-600 ${specialToday && "font-semibold text-left"}`}>
+                  <p
+                    className={`text-gray-600 ${
+                      specialToday && "font-semibold text-left"
+                    }`}
+                  >
                     {scheduleTime ?? "N/A"}
                   </p>
                 </div>

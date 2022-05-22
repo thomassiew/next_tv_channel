@@ -8,7 +8,7 @@ export const getFilteredChannelSchedules = (
   const getCurrentSchedule = schedules.filter(
     (s) =>
       dateTime.getTime() <
-      new Date(s.datetime).getTime() + convertDurationToMilliSeconds(s.duration)
+      new Date(s.datetime.replace(/ /g, "T")).getTime() + convertDurationToMilliSeconds(s.duration)
   );
 
   return getCurrentSchedule;
