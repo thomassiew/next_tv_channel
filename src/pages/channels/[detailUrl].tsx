@@ -8,13 +8,13 @@ import { Seo } from "../../components/common/Seo";
 
 import { ChannelDetails } from "../../types/channel.types";
 
-interface PageProps {
+export interface ChannelDetailProps {
   responseCode: number;
   responseMessage: string;
   response: ChannelDetails;
 }
 
-export default function Article(props: PageProps) {
+export default function ChannelDetailPage(props: ChannelDetailProps) {
   const channelDetails: ChannelDetails = props.response ?? {};
   return (
     props && (

@@ -13,13 +13,13 @@ import { Seo } from "../components/common/Seo";
 import ChannelFilter from "../components/channels/filter/ChannelFilter";
 import ChannelFavouriteListing from "../components/channels/ChannelFavouriteListing";
 
-interface PageProps {
+export interface ChannelHomeProps {
   responseCode: number;
   responseMessage: string;
   response: Channel[];
 }
 
-export default function ChannelHome(props: PageProps) {
+export default function ChannelHome(props: ChannelHomeProps) {
   const data: Channel[] = props.response;
   const { setInitialData, setSearchKey, isOpenModal } = useStore();
   useEffect(() => {
