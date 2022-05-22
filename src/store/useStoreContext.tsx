@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { ChannelDetails } from "../types/channel.types";
+import { Channel } from "../types/channel.types";
 
 type StoreProps = {
   sortKey: string | undefined;
@@ -14,10 +14,10 @@ type StoreProps = {
   setIsOpenModal: (open: boolean) => void;
   searchKey: string | undefined;
   setSearchKey: (search: string | undefined) => void;
-  initialData: ChannelDetails[];
-  setInitialData: (channels: ChannelDetails[]) => void;
-  filteredData: ChannelDetails[];
-  setFilteredData: (channels: ChannelDetails[]) => void;
+  initialData: Channel[];
+  setInitialData: (channels: Channel[]) => void;
+  filteredData: Channel[];
+  setFilteredData: (channels: Channel[]) => void;
   resetAll: () => void;
 };
 
@@ -39,8 +39,8 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [sortKey, setSortKey] = useState<string | undefined>(undefined);
   const [searchKey, setSearchKey] = useState<string | undefined>(undefined);
-  const [initialData, setInitialData] = useState<ChannelDetails[]>([]);
-  const [filteredData, setFilteredData] = useState<ChannelDetails[]>([]);
+  const [initialData, setInitialData] = useState<Channel[]>([]);
+  const [filteredData, setFilteredData] = useState<Channel[]>([]);
 
   const resetAll = () => {
     setIsOpenModal(false);

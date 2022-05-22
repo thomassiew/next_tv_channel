@@ -15,13 +15,17 @@ module.exports = {
       width: {
         "72px": "72px",
         "76px": "76px",
+        "16px": "16px",
       },
       height: {
         "40px": "40px",
         "32px": "32px",
+        "16px": "16px",
       },
       minWidth: {
         "1/4": "28%",
+        "1/5": "20%",
+        "6rem": "6rem",
       },
       screens: {
         sm: "640px",

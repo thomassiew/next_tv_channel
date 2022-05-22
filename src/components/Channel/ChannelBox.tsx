@@ -1,15 +1,15 @@
 import Image from "next/image";
 import React from "react";
 import { format } from "date-fns";
-import { ChannelDetails } from "../../types/channel.types";
+import { Channel } from "../../types/channel.types";
 import Link from "next/link";
 
-const ChannelBox = ({ channel }: { channel: ChannelDetails }) => {
+const ChannelBox = ({ channel }: { channel: Channel }) => {
   const currentSchedule = channel.currentSchedule;
   const channelDetailUrl = channel.detailUrl;
 
   return (
-    <Link href={`/${channelDetailUrl}`} passHref>
+    <Link href={`${channelDetailUrl}`} passHref>
       <div className="flex flex-col rounded shadow-astro p-2 m-2 cursor-pointer">
         <div className="flex flex-row border-b p-3">
           <div className="h-40px relative w-72px ">
@@ -37,7 +37,7 @@ const ChannelBox = ({ channel }: { channel: ChannelDetails }) => {
                   : format(new Date(schedule.datetime), "hh:mm a");
               return (
                 <div key={schedule.eventId} className="flex flex-row">
-                  <div className="pr-5 min-w-1/4">
+                  <div className="pr-5 min-w-6rem">
                     <p
                       className={`${
                         isFirstSchedule && "font-semibold text-left"

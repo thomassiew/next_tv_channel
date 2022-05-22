@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { GetStaticProps } from "next";
 import Header from "../components/common/Header";
-import { ChannelDetails } from "../types/channel.types";
+import { Channel } from "../types/channel.types";
 import ChannelListing from "../components/channel/ChannelListing";
 import Search from "../components/common/Search";
 import { useStore } from "../store/useStoreContext";
@@ -13,11 +13,11 @@ import ChannelSort from "../components/channel/ChannelSort";
 interface PageProps {
   responseCode: number;
   responseMessage: string;
-  response: ChannelDetails[];
+  response: Channel[];
 }
 
 export default function ChannelHome(props: PageProps) {
-  const data: ChannelDetails[] = props.response;
+  const data: Channel[] = props.response;
   const { setInitialData, setSearchKey, isOpenModal } = useStore();
 
   useEffect(() => {

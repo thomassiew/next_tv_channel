@@ -1,4 +1,4 @@
-export interface ChannelDetails {
+export interface Channel {
   id: number;
   title: string;
   description: string;
@@ -11,11 +11,11 @@ export interface ChannelDetails {
   imageUrl: string;
   isAstroGoExclusive: boolean;
   filters: string[];
-  detailUrl: string;
-  currentSchedule: Schedule[];
+  detailUrl?: string;
+  currentSchedule?: CurrentSchedule[];
 }
 
-export interface Schedule {
+export interface CurrentSchedule {
   eventId: string;
   title: string;
   programmeId: null;
@@ -25,4 +25,12 @@ export interface Schedule {
   duration: string;
   siTrafficKey: string;
   detailUrl: string;
+}
+
+export interface Schedule {
+  [key: string]: CurrentSchedule[];
+}
+
+export interface ChannelDetails extends Channel {
+  schedule: Schedule;
 }

@@ -1,21 +1,16 @@
-import { Schedule } from "../types/channel.types";
-import { isSameDay } from "date-fns";
+import { CurrentSchedule, Schedule } from "../types/channel.types";
+import { format, isToday } from "date-fns";
 
 export const getFilteredChannelSchedules = (
-  schedules: Schedule[],
+  schedules: CurrentSchedule[],
   dateTime: Date
 ) => {
-  const filterSameDaySchedule = schedules.filter((s) =>
-    isSameDay(dateTime, new Date(s.datetimeInUtc))
+  const getCurrentSchedule = schedules.filter(
+    (s) =>
+      dateTime.getTime() <
+      new Date(s.datetime).getTime() + convertDurationToMilliSeconds(s.duration)
   );
 
-  const getCurrentSchedule = filterSameDaySchedule.filter(
-    (s) =>
-      dateTime.getTime() >
-      new Date(s.datetimeInUtc).getTime() +
-        convertDurationToMilliSeconds(s.duration)
-  );
-    
   return getCurrentSchedule;
 };
 
@@ -28,4 +23,17 @@ const convertDurationToMilliSeconds = (duration: string) => {
     +splittedDuration[2];
 
   return seconds * 1000;
+};
+
+export const convertScheduletoDaysObjects = (schedules: Schedule | {}) => {
+  return Object.keys(schedules).map((s) => {
+    const currentDate = new Date(s);
+
+    return {
+      day: isToday(currentDate)
+        ? "TODAY"
+        : format(currentDate, "E").toUpperCase(),
+      date: s,
+    };
+  });
 };
