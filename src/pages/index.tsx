@@ -9,6 +9,7 @@ import { useStore } from "../store/useStoreContext";
 import ChannelCategory from "../components/channel/ChannelCategory";
 import Modal from "../components/common/Modal";
 import ChannelSort from "../components/channel/ChannelSort";
+import { Seo } from "../components/common/seo";
 
 interface PageProps {
   responseCode: number;
@@ -27,6 +28,10 @@ export default function ChannelHome(props: PageProps) {
   return (
     props && (
       <>
+        <Seo
+          title="Channels | Astro Content Guide"
+          description="Astro Content Guide, astro coding challenge"
+        />
         {isOpenModal && (
           <Modal>
             <ChannelSort />

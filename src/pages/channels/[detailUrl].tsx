@@ -4,6 +4,7 @@ import ChannelDetailsHeader from "../../components/channelDetails/ChannelDetails
 import ChannelDetailsSchedule from "../../components/channelDetails/ChannelDetailsSchedule";
 import Container from "../../components/common/Container";
 import Header from "../../components/common/Header";
+import { Seo } from "../../components/common/seo";
 
 import { ChannelDetails } from "../../types/channel.types";
 
@@ -18,6 +19,10 @@ export default function Article(props: PageProps) {
   return (
     props && (
       <>
+        <Seo
+          title={`${channelDetails.title} | Channels | Astro Content Guide`}
+          description={channelDetails.description}
+        />
         <Header />
         <Container className="mx-auto max-w-screen-md">
           <ChannelDetailsBreadCrumbs titles={[channelDetails.title]} />
