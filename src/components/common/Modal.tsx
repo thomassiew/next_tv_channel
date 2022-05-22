@@ -6,7 +6,7 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
 
   return (
     <div className="fixed z-50 w-full h-full bg-modal-black overflow-hidden">
-      <div className="fixed w-full max-w-sm top-0 right-0 bg-white h-full z-80 ">
+      <div className="fixed w-full max-w-sm top-0 right-0 bg-white h-full z-80 overflow-auto">
         <div className="flex flex-col h-screen ">
           <div className="flex justify-between items-center p-5 border-b">
             <button
