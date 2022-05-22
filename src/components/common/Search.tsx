@@ -15,7 +15,12 @@ const Search = ({
     <>
       <div className="bg-astro-black ">
         <Container className="grid place-items-center bg-astro-black ">
-          <h1 className="text-3xl font-bold text-white">CONTENT GUIDE</h1>
+          <h1
+            className="text-3xl font-bold text-white"
+            data-testid="home-content"
+          >
+            CONTENT GUIDE
+          </h1>
         </Container>
       </div>
 
@@ -23,6 +28,7 @@ const Search = ({
         <Container className="grid place-items-center bg-astro-black ">
           <div className="flex flex-row w-full ">
             <input
+              data-testid="search-input"
               ref={inputRef}
               type="text"
               onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -34,6 +40,7 @@ const Search = ({
               placeholder="Search Channels, TV Shows, Movies"
             />
             <button
+              data-testid="search-button"
               className="appearance-none px-5 rounded-r-full bg-astro-pink"
               onClick={() => handleSearch()}
             >

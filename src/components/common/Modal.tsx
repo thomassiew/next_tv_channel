@@ -18,6 +18,7 @@ const Modal = ({ children }: { children?: React.ReactNode }) => {
             </button>
             <button
               type="button"
+              data-testid="Refine-Modal-X"
               className="bg-transparent"
               onClick={() => setIsOpenModal(false)}
             >

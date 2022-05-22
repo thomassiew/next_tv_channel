@@ -17,6 +17,7 @@ const ChannelRefineButton = () => {
         )}
         <button
           type="button"
+          data-testid="refine-button"
           className="bg-transparent flex flex-row align-center"
           onClick={() => setIsOpenModal(true)}
         >

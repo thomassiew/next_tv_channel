@@ -41,6 +41,7 @@ const ChannelDetailsHeader = ({ details }: { details: ChannelDetails }) => {
           )}
           <div className="ml-4">
             <button
+              data-testid="Favourite-Button"
               type="button"
               className="bg-transparent"
               onClick={() => handleFavouriteData(channel)}
