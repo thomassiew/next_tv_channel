@@ -5,6 +5,7 @@
 
 - Built a frontend content guide website with NextJs Typescript
 - Completed Level 1 to Level 4
+- Dynamic SEO on title and meta title description
 - Unit test case coverage > 70%
 - Opt for SSR over SSG for better rendering + response
 - Deployed to Vercel for better interviewer review experience. [Link](https://astro-coding-challenge.vercel.app/)
