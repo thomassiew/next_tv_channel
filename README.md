@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Astro Coding Challenge 2022
 
-## Getting Started
 
-First, run the development server:
+## Key Summary
+
+- Built a frontend content guide website with NextJs Typescript
+- Completed Level 1 to Level 4
+- Unit test case coverage > 70%
+- Opt for SSR over SSG for better rendering + response
+- Deployed to Vercel for better interviewer review experience. [Link](https://astro-coding-challenge.vercel.app/)
+
+
+## Framework / Libraries used
+
+- NextJs Typescript
+- Tailwind CSS
+- lodash
+- date-fns
+- Jest (Unit Test)
+- Playwright (Integration Test)
+
+## Running the app
 
 ```bash
-npm run dev
-# or
-yarn dev
+# install package
+$ npm install
+
+# Local Development
+$ npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Test
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+# unit tests
+$ npm run test
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# integration tests
+$ npm run test:e2e
+```
+### Note/Question:
 
-## Learn More
+- I notice `datetime` and `datetimeInUtc` are not iso string. Is this intended? It seems to be the same on your website https://content.astro.com.my/
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
