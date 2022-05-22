@@ -3,15 +3,15 @@ import React, { useEffect } from "react";
 import { GetStaticProps } from "next";
 import Header from "../components/common/Header";
 import { Channel } from "../types/channel.types";
-import ChannelListing from "../components/channel/ChannelListing";
+import ChannelListing from "../components/channels/ChannelListing";
 import Search from "../components/common/Search";
 import { useStore } from "../store/useStoreContext";
-import ChannelRefineButton from "../components/channel/ChannelRefineButton";
+import ChannelRefineButton from "../components/channels/ChannelRefineButton";
 import Modal from "../components/common/Modal";
-import ChannelSort from "../components/channel/ChannelSort";
+import ChannelSort from "../components/channels/ChannelSort";
 import { Seo } from "../components/common/Seo";
-import ChannelFilter from "../components/channel/filter/ChannelFilter";
-import ChannelFavouriteListing from "../components/channel/ChannelFavouriteListing";
+import ChannelFilter from "../components/channels/filter/ChannelFilter";
+import ChannelFavouriteListing from "../components/channels/ChannelFavouriteListing";
 
 interface PageProps {
   responseCode: number;
