@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import ChannelDetailsBreadCrumbs from "../../components/channelDetails/ChannelDetailsBreadCrumbs";
 import ChannelDetailsHeader from "../../components/channelDetails/ChannelDetailsHeader";
 import ChannelDetailsSchedule from "../../components/channelDetails/ChannelDetailsSchedule";
@@ -34,14 +34,7 @@ export default function ChannelDetailPage(props: ChannelDetailProps) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const detailUrl = context.params?.detailUrl?.toString() ?? "";
 
   if (detailUrl.indexOf("-") < 0) {
@@ -57,6 +50,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: data,
-    revalidate: 60 * 5,
   };
 };

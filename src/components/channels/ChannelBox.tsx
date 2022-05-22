@@ -3,10 +3,17 @@ import React from "react";
 import { format } from "date-fns";
 import { Channel } from "../../types/channel.types";
 import Link from "next/link";
+import { getFilteredChannelSchedules } from "../../services/channelServices";
 
 const ChannelBox = ({ channel }: { channel: Channel }) => {
   const currentSchedule = channel.currentSchedule;
   const channelDetailUrl = channel.detailUrl;
+
+  const filteredSchedule = getFilteredChannelSchedules(
+    currentSchedule || [],
+    new Date()
+  );
+
   return (
     <Link href={`${channelDetailUrl}`} passHref>
       <div className="flex flex-col rounded shadow-astro p-2 m-2 cursor-pointer hover:shadow-astro-pink">
@@ -27,13 +34,16 @@ const ChannelBox = ({ channel }: { channel: Channel }) => {
           </div>
         </div>
         <div className="flex flex-col p-3">
-          {currentSchedule && currentSchedule.length > 0 ? (
-            currentSchedule.slice(0, 3).map((schedule, index) => {
+          {filteredSchedule && filteredSchedule.length > 0 ? (
+            filteredSchedule.slice(0, 3).map((schedule, index) => {
               const isFirstSchedule = index < 1;
               const scheduleTime =
                 index < 1
                   ? "On Now"
-                  : format(new Date(schedule.datetime.replace(/ /g, "T")), "hh:mm a");
+                  : format(
+                      new Date(schedule.datetime.replace(/ /g, "T")),
+                      "hh:mm a"
+                    );
               return (
                 <div key={schedule.eventId} className="flex flex-row">
                   <div className="pr-5 min-w-6rem">

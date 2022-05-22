@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import Header from "../components/common/Header";
 import { Channel } from "../types/channel.types";
 import ChannelListing from "../components/channels/ChannelListing";
@@ -49,13 +49,12 @@ export default function ChannelHome(props: ChannelHomeProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const data = await fetch(
     `https://contenthub-api.eco.astro.com.my/channel/all.json`
   ).then((res) => res.json());
 
   return {
     props: data,
-    revalidate: 60 * 5,
   };
 };
