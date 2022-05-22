@@ -4,7 +4,7 @@ import ChannelDetailsHeader from "../../components/channelDetails/ChannelDetails
 import ChannelDetailsSchedule from "../../components/channelDetails/ChannelDetailsSchedule";
 import Container from "../../components/common/Container";
 import Header from "../../components/common/Header";
-import { Seo } from "../../components/common/seo";
+import { Seo } from "../../components/common/Seo";
 
 import { ChannelDetails } from "../../types/channel.types";
 

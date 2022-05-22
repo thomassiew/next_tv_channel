@@ -6,7 +6,7 @@ const ChannelSort = () => {
   const sorting = ["Name", "Number"];
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pb-6 border-b">
       <h1 className="font-semibold text-lg mb-3">Sort By</h1>
       <div className="flex flex-row">
         {sorting.map((el) => {

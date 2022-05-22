@@ -6,10 +6,11 @@ import { Channel } from "../types/channel.types";
 import ChannelListing from "../components/channel/ChannelListing";
 import Search from "../components/common/Search";
 import { useStore } from "../store/useStoreContext";
-import ChannelCategory from "../components/channel/ChannelCategory";
+import ChannelRefineButton from "../components/channel/ChannelRefineButton";
 import Modal from "../components/common/Modal";
 import ChannelSort from "../components/channel/ChannelSort";
-import { Seo } from "../components/common/seo";
+import { Seo } from "../components/common/Seo";
+import ChannelFilter from "../components/channel/filter/ChannelFilter";
 
 interface PageProps {
   responseCode: number;
@@ -20,7 +21,6 @@ interface PageProps {
 export default function ChannelHome(props: PageProps) {
   const data: Channel[] = props.response;
   const { setInitialData, setSearchKey, isOpenModal } = useStore();
-
   useEffect(() => {
     if (data) setInitialData(data);
   }, []);
@@ -35,11 +35,12 @@ export default function ChannelHome(props: PageProps) {
         {isOpenModal && (
           <Modal>
             <ChannelSort />
+            <ChannelFilter />
           </Modal>
         )}
         <Header />
         <Search onSubmit={setSearchKey} />
-        <ChannelCategory />
+        <ChannelRefineButton />
         <ChannelListing />
       </>
     )

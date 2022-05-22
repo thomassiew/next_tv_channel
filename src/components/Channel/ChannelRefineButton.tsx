@@ -2,11 +2,19 @@ import React from "react";
 import { useStore } from "../../store/useStoreContext";
 import Container from "../common/Container";
 
-const ChannelCategory = () => {
-  const { setIsOpenModal } = useStore();
+const ChannelRefineButton = () => {
+  const { setIsOpenModal, languageKey, categoryKey, sortKey, resolutionKey } =
+    useStore();
+
+  const isRefined = () => {
+    return languageKey || categoryKey || sortKey || resolutionKey;
+  };
   return (
-    <Container className="p-4">
+    <Container className="mt-3">
       <div className="flex flex-row-reverse">
+        {isRefined() && (
+          <div className="rounded-full w-3 h-3 bg-astro-pink absolute"></div>
+        )}
         <button
           type="button"
           className="bg-transparent flex flex-row align-center"
@@ -37,4 +45,4 @@ const ChannelCategory = () => {
   );
 };
 
-export default ChannelCategory;
+export default ChannelRefineButton;
