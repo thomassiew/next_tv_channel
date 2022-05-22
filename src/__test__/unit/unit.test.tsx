@@ -8,16 +8,28 @@ import {
 } from "../mocks/mock-data";
 import ChannelDetailPage from "../../pages/channels/[detailUrl]";
 import { getFilteredChannelSchedules } from "../../services/channelServices";
+import { StoreProvider } from "../../store/useStoreContext";
+import Modal from "../../components/common/Modal";
+import ChannelSort from "../../components/channels/ChannelSort";
+import ChannelFilter from "../../components/channels/filter/ChannelFilter";
 
 describe("Component Unit Testing", () => {
   it("Renders ChannelHome main page", async () => {
-    render(<ChannelHome {...ONE_MOCK_RESPONSE_CHANNEL} />);
+    render(
+      <StoreProvider>
+        <ChannelHome {...ONE_MOCK_RESPONSE_CHANNEL} />
+      </StoreProvider>
+    );
 
     expect(await screen.findByText(/CONTENT GUIDE/)).toBeVisible();
   });
 
   it("Renders ChannelDetail Page", async () => {
-    render(<ChannelDetailPage {...ONE_MOCK_RESPONSE_CHANNEL_DETAIL} />);
+    render(
+      <StoreProvider>
+        <ChannelDetailPage {...ONE_MOCK_RESPONSE_CHANNEL_DETAIL} />
+      </StoreProvider>
+    );
 
     expect(
       screen.getByText(
@@ -25,11 +37,21 @@ describe("Component Unit Testing", () => {
       )
     ).toBeVisible();
   });
+
+  it("Renders Refine Modal", async () => {
+    render(
+      <Modal>
+        <ChannelSort />
+        <ChannelFilter />
+      </Modal>
+    );
+
+    expect(screen.getByText("Sort By")).toBeVisible();
+  });
 });
 
 describe("Function Unit Testing", () => {
   it("getFilteredChannelSchedules", async () => {
-    
     const schedule = getFilteredChannelSchedules(
       ONE_MOCK_CHANNEL_DETAIL.schedule["2021-03-09"],
       new Date("2022-05-23 01:30:00.0")
