@@ -11,6 +11,7 @@ import Modal from "../components/common/Modal";
 import ChannelSort from "../components/channel/ChannelSort";
 import { Seo } from "../components/common/Seo";
 import ChannelFilter from "../components/channel/filter/ChannelFilter";
+import ChannelFavouriteListing from "../components/channel/ChannelFavouriteListing";
 
 interface PageProps {
   responseCode: number;
@@ -40,6 +41,7 @@ export default function ChannelHome(props: PageProps) {
         )}
         <Header />
         <Search onSubmit={setSearchKey} />
+        <ChannelFavouriteListing />
         <ChannelRefineButton />
         <ChannelListing />
       </>

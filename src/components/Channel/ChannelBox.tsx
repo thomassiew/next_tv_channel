@@ -7,10 +7,9 @@ import Link from "next/link";
 const ChannelBox = ({ channel }: { channel: Channel }) => {
   const currentSchedule = channel.currentSchedule;
   const channelDetailUrl = channel.detailUrl;
-
   return (
     <Link href={`${channelDetailUrl}`} passHref>
-      <div className="flex flex-col rounded shadow-astro p-2 m-2 cursor-pointer">
+      <div className="flex flex-col rounded shadow-astro p-2 m-2 cursor-pointer hover:shadow-astro-pink">
         <div className="flex flex-row border-b p-3">
           <div className="h-40px relative w-72px ">
             <Image

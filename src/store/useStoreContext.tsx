@@ -7,9 +7,12 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { Channel } from "../types/channel.types";
+import { Channel, ChannelDetails } from "../types/channel.types";
 
 type StoreProps = {
+  handleFavouriteData: (channel: ChannelDetails) => void;
+  favouriteChannels: ChannelDetails[];
+  setFavouriteChannels: (fav: ChannelDetails[]) => void;
   resolutionKey: string | undefined;
   setResolutionKey: (hd: string | undefined) => void;
   languageKey: string | undefined;
@@ -30,6 +33,9 @@ type StoreProps = {
 };
 
 const StoreContext = createContext<StoreProps>({
+  handleFavouriteData: () => {},
+  favouriteChannels: [],
+  setFavouriteChannels: () => {},
   resolutionKey: undefined,
   setResolutionKey: () => {},
   languageKey: undefined,
@@ -59,6 +65,9 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
   const [searchKey, setSearchKey] = useState<string | undefined>(undefined);
   const [initialData, setInitialData] = useState<Channel[]>([]);
   const [filteredData, setFilteredData] = useState<Channel[]>([]);
+  const [favouriteChannels, setFavouriteChannels] = useState<ChannelDetails[]>(
+    []
+  );
 
   const resetAll = () => {
     setIsOpenModal(false);
@@ -67,6 +76,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
     setLanguageKey(undefined);
     setResolutionKey(undefined);
   };
+
   const handleDataFiltering = () => {
     const newFilteredData = initialData
       .filter((resolution) => {
@@ -110,8 +120,30 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
         return 0;
       });
 
-    setFilteredData(newFilteredData);
+    setFilteredData([...newFilteredData]);
   };
+
+  const handleFavouriteData = (channel: ChannelDetails) => {
+    const isFavourited = favouriteChannels.find((c) => c.id === channel.id);
+    let currentFavourites = favouriteChannels;
+
+    if (!isFavourited) {
+      currentFavourites.push(channel);
+    } else {
+      currentFavourites = currentFavourites.filter((c) => c.id !== channel.id);
+    }
+
+    localStorage.setItem("favourite", JSON.stringify(currentFavourites));
+    setFavouriteChannels([...currentFavourites]);
+  };
+
+  useEffect(() => {
+    const favourite = localStorage.getItem("favourite");
+
+    if (favourite) {
+      setFavouriteChannels(JSON.parse(favourite));
+    }
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isOpenModal ? "hidden" : "auto";
@@ -131,6 +163,9 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
   return (
     <StoreContext.Provider
       value={{
+        handleFavouriteData,
+        favouriteChannels,
+        setFavouriteChannels,
         resolutionKey,
         setResolutionKey,
         languageKey,
