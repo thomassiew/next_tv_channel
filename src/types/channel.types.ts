@@ -11,6 +11,7 @@ export interface ChannelDetails {
   imageUrl: string;
   isAstroGoExclusive: boolean;
   filters: string[];
+  detailUrl: string;
   currentSchedule: Schedule[];
 }
 

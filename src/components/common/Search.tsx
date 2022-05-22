@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Container from "../common/Container";
+import Container from "./Container";
 
 const Search = ({
   onSubmit,
