@@ -1,4 +1,4 @@
-# Astro Coding Challenge 2022
+# TV Channel Coding Challenge 2022
 
 
 ## Key Summary
